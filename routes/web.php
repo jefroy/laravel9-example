@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AboutUsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +19,10 @@ Route::get('/', function () {
 });
 
 // load view based on url, about-us maps to the blade template in resources/views/about-us
-Route::get('about-laravel', function () {
-    return view('about-us');
-});
+//Route::get('about-laravel', function () {
+//    return view('about-us');
+//});
+Route::get('about-laravel', AboutUsController::class); // instead, call controller class, this will call __invoke
 
 // redirect example
 Route::get('about-us', function () {
