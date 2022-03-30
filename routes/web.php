@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AboutUsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,23 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+// load view based on url, about-us maps to the blade template in resources/views/about-us
+//Route::get('about-laravel', function () {
+//    return view('about-us');
+//});
+Route::get('about-laravel', AboutUsController::class); // instead, call controller class, this will call __invoke
+
+// redirect example
+Route::get('about-us', function () {
+    return redirect('about-laravel');
+});
+
+// file download example
+/*
+ * make a dummy file in public dir (dummy.txt)
+ */
+Route::get('dl-dummy', function () {
+    return response()->download(public_path('dummy'));
 });
