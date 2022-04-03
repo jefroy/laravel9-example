@@ -36,3 +36,31 @@ Route::get('about-us', function () {
 Route::get('dl-dummy', function () {
     return response()->download(public_path('dummy'));
 });
+
+
+// model route examples
+/*
+ * return a user object
+ */
+Route::get('createjohn', function () {
+    $user = \App\Models\User::create([
+        'name' => 'john',
+        'email' => 'john@jon.com',
+        'password' => \Illuminate\Support\Facades\Hash::make('password')
+    ]);
+    return $user;
+});
+/*
+ * return all users
+ */
+Route::get('allusers', function () {
+    dump(\App\Models\User::all());
+});
+/*
+ * find user model given id 1
+ */
+Route::get('getuser1', function () {
+    dump(\App\Models\User::find(1)); // 1 is the user id at 1
+});
+
+
