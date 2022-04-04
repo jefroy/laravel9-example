@@ -31,11 +31,23 @@ class PostController extends Controller
         // after creating the post, redirect to home
         return redirect('/');
     }
-    public function update(){
-
+    public function update(Post $post){
+        $data = request()->validate([
+            'content' => ['string']
+        ]);
+        $post->update($data);
+        return redirect('/');
     }
-    public function edit(){
-
+//    public function edit($postId){ // get post id from url
+//        $post = Post::find($postId);
+//        return view('edit', [
+//            'post' => $post
+//        ]);
+//    }
+    public function edit(Post $post){ // laravel smart enough to do it for us once we give it a type
+        return view('edit', [
+            'post' => $post
+        ]);
     }
     public function destroy(){
 
