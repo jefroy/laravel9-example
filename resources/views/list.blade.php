@@ -33,8 +33,9 @@
                 <p class="w-2/5 p-6">{{$post->content}}</p>
                 <div class="w-1/5 flex">
                     <a href="{{url("/posts/{$post->id}")}}">--Update--</a>
-                    <form action="/" method="DELETE" class="p-2 ml-2 rounded-md bg-red-500">
+                    <form action="{{url("/posts/{$post->id}")}}" method="POST" class="p-2 ml-2 rounded-md bg-red-500">
                         @method('DELETE')
+                        @csrf
                         <button type="submit">--Delete--</button>
                     </form>
                 </div>
