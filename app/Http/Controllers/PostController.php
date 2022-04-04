@@ -9,7 +9,9 @@ class PostController extends Controller
 {
     //
     public function list(){
-        $posts = Post::orderByDesc('created_at')->get();
+        $posts = Post::orderByDesc('created_at')
+            ->with('user') // check Post model for this rship
+            ->get();
         return view('list', ['posts' => $posts]);
     }
     public function create(){

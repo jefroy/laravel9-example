@@ -29,7 +29,7 @@
     <ul>
         @foreach($posts as $post)
             <li class="flex items-center mb-5">
-                <span class="w-1/5 p-6">User:</span>
+                <span class="w-1/5 p-6">{{$post->user->name}}:</span>
                 <p class="w-2/5 p-6">{{$post->content}}</p>
                 <div class="w-1/5 flex">
                     <a href="{{url("/posts/{$post->id}")}}">--Update--</a>
